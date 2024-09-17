@@ -1,0 +1,2 @@
+# Soroban Project - SchoolContract
+# SchoolRegistry
