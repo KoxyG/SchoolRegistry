@@ -43,7 +43,7 @@ impl SchoolContract {
         let new_student = Student { id, name, age, class, height };
         
         students.push_back(new_student.clone());
-        
+
         env.storage().instance().set(&STUDENT, &students);
         env.storage().instance().extend_ttl(100, 100);
         new_student
@@ -62,18 +62,20 @@ impl SchoolContract {
         new_teacher
     }
 
-
-    pub fn get_student(env: Env) -> Student {
-        env.storage().instance().get(&STUDENT).unwrap()
+    pub fn get_students(env: Env) -> Vec<Student> {
+        env.storage().instance().get(&STUDENT).unwrap_or_else(|| Vec::new(&env))
     }
-
+    
     pub fn get_teacher(env: Env) -> Teacher {
         env.storage().instance().get(&TEACHER).unwrap()
     }
 
-    pub fn get_a_student(env: Env, id: u32) {
+    
+    
+
+    // pub fn get_a_student(env: Env, id: u32) {
        
-    }
+    // }
     
 
     
